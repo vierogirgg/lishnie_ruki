@@ -20,9 +20,8 @@ dp = Dispatcher()
 @dp.message(CommandStart())
 async def command_start_handler(message: types.Message):
     # Кнопка для открытия Mini App
-    # ВАЖНО: Для теста я использую временный URL, 
-    # в реальности тут должен быть URL твоего фронтенда
-    web_app = WebAppInfo(url="https://lishnie-ruki-demo.vercel.app") 
+    # Ссылка на твой GitHub Pages
+    web_app = WebAppInfo(url="https://vierogirgg.github.io/lishnie-ruki/") 
     
     kb = [
         [KeyboardButton(text="Открыть Лишние Руки 🐾", web_app=web_app)]
@@ -41,4 +40,4 @@ async def main():
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.run(main())    asyncio.run(main())
