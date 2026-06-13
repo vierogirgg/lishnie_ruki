@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+firebase-admin
+aiogram==2.25.1
+pydantic
+python-multipart

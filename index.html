@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лишние Руки 🐾</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF8B94;
+            --secondary: #A8E6CF;
+            --accent: #FFD3B6;
+            --bg: #FFF9F0;
+            --text: #4A4A4A;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #app {
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            background: var(--bg);
+            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .screen {
+            display: none;
+            flex-direction: column;
+            padding: 20px;
+            height: 100%;
+            box-sizing: border-box;
+            animation: fadeIn 0.5s;
+        }
+
+        .screen.active { display: flex; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Splash Screen */
+        .splash { justify-content: center; align-items: center; text-align: center; }
+        .splash h1 { font-size: 3rem; color: var(--primary); margin: 0; animation: bounce 2s infinite; }
+        .splash p { font-size: 1.2rem; opacity: 0.8; }
+
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+        /* Disclaimer & Roles */
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 30px;
+            border: 4px solid var(--accent);
+            box-shadow: 0 8px 0 var(--accent);
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 0 5px 0 #e5737a;
+            transition: 0.1s;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        button:active { transform: translateY(4px); box-shadow: 0 1px 0 #e5737a; }
+
+        .role-btn {
+            background: white;
+            color: var(--text);
+            border: 3px solid var(--secondary);
+            box-shadow: 0 5px 0 var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        /* Main Screen */
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; }
+        .map-box {
+            width: 100%;
+            height: 250px;
+            background: #e0f7fa;
+            border-radius: 25px;
+            border: 3px dashed var(--secondary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ad-card {
+            background: white;
+            padding: 15px;
+            border-radius: 20px;
+            margin: 10px 0;
+            border: 2px solid #f0f0f0;
+            text-align: left;
+        }
+
+        .ad-card h4 { margin: 0; color: var(--primary); }
+        .ad-card p { margin: 5px 0; font-size: 0.9rem; }
+
+        .nav-bar {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-around;
+            background: white;
+            padding: 15px;
+            border-radius: 25px 25px 0 0;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <!-- Splash -->
+    <div id="splash" class="screen active splash">
+        <h1>🐾</h1>
+        <h1>Лишние Руки</h1>
+        <p>Помогай приютам. Становись нужным.</p>
+    </div>
+
+    <!-- Disclaimer -->
+    <div id="disclaimer" class="screen">
+        <div class="card">
+            <h2>Важно! 📢</h2>
+            <p>Лишние Руки — это платформа для добрых дел. Встречайтесь только на территории приютов и берегите себя!</p>
+            <button onclick="showScreen('roles')">Я понимаю и согласен</button>
+        </div>
+    </div>
+
+    <!-- Roles -->
+    <div id="roles" class="screen">
+        <h2 style="text-align: center; margin-top: 50px;">Кто ты сегодня?</h2>
+        <div style="margin-top: auto; margin-bottom: auto;">
+            <button class="role-btn" onclick="showScreen('main')"><span>🐶</span> Я волонтёр</button>
+            <button class="role-btn" onclick="showScreen('main')"><span>🏠</span> Я координатор</button>
+        </div>
+    </div>
+
+    <!-- Main -->
+    <div id="main" class="screen">
+        <div class="header">
+            <span style="font-weight: 900;">Привет, Друг! 🐾</span>
+            <span style="font-size: 1.5rem;">👤</span>
+        </div>
+        <div class="map-box">
+            <div style="text-align: center;">
+                <span style="font-size: 3rem;">🗺️</span>
+                <p style="font-weight: bold; color: #00acc1;">Игрушечная карта</p>
+            </div>
+        </div>
+        <div style="overflow-y: auto; flex: 1;">
+            <h3 style="margin: 15px 0 5px 0;">Нужна помощь:</h3>
+            <div class="ad-card">
+                <h4>Выгул собак (8 лапок)</h4>
+                <p>📍 Приют "Верный друг"</p>
+                <p>📅 15 июня, 17:00</p>
+                <button style="padding: 8px; font-size: 0.9rem; margin-top: 5px;">Откликнуться</button>
+            </div>
+            <div class="ad-card">
+                <h4>Разбор корма</h4>
+                <p>📍 Приют "Кошкин Дом"</p>
+                <p>📅 16 июня, 12:00</p>
+                <button style="padding: 8px; font-size: 0.9rem; margin-top: 5px;">Откликнуться</button>
+            </div>
+        </div>
+        <div class="nav-bar">
+            <span>🏠</span>
+            <span>🔍</span>
+            <span>💬</span>
+            <span>⚙️</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showScreen(id) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+    }
+
+    // Авто-переход со сплэша
+    setTimeout(() => showScreen('disclaimer'), 3000);
+</script>
+
+</body>
+</html>

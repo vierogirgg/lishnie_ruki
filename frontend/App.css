@@ -1,0 +1,106 @@
+:root {
+  --primary: #FF8B94;
+  --secondary: #A8E6CF;
+  --accent: #FFD3B6;
+  --bg: #FFF9F0;
+  --text: #4A4A4A;
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+}
+
+.app-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.splash h1 {
+  font-size: 3rem;
+  color: var(--primary);
+  text-shadow: 2px 2px 0px var(--accent);
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 30px;
+  border: 4px solid var(--accent);
+  box-shadow: 0 8px 0 var(--accent);
+}
+
+button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #e5737a;
+  transition: transform 0.1s;
+  margin-top: 15px;
+}
+
+button:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 #e5737a;
+}
+
+.role-btn {
+  width: 100%;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  background: white;
+  color: var(--text);
+  border: 3px solid var(--secondary);
+  box-shadow: 0 5px 0 var(--secondary);
+}
+
+.ad-card {
+  background: white;
+  width: 90%;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 20px;
+  border: 2px solid #eee;
+  text-align: left;
+}
+
+.map-placeholder {
+  width: 100%;
+  height: 200px;
+  background: #e0f7fa;
+  border-radius: 25px;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px dashed var(--secondary);
+}
+
+/* Анимация прыжка */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+.bounce { animation: bounce 2s infinite; }
